@@ -1,0 +1,434 @@
+{
+	"info": {
+		"_postman_id": "8a0125de-0d28-48a3-99fc-6c7dc46651ae",
+		"name": "SistemaCompraVentaCripto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28285124"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "LoginRolConAdministrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mariocoria@gmail.com\",\r\n  \"clave\": \"1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginRolConCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"aliciacoria@gmail.com\",\r\n  \"clave\": \"9999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "TodosLosUsuarios",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario_Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "CreaUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"nombre\": \"Lionel\",\r\n    \"apellido\": \"Messi\",\r\n    \"dni\": 24354977,\r\n    \"email\": \"lionelmessi@gmail.com\",\r\n    \"clave\": \"9991\",\r\n    \"roles\":null,\r\n    \"cuentas\":[],\r\n    \"fechaNacimiento\": \"1980-10-27T12:43:53.237Z\",\r\n    \"genero\": 1,\r\n    \"estadoCivil\": 1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Usuario/crear",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Usuario",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7110/api/Usuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta",
+			"item": [
+				{
+					"name": "CrearFiduciaria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuentaCripto\": {\r\n    \"uuid\": \"string\",\r\n    \"nombreCripto\": \"string\",\r\n    \"saldo\": 0\r\n  },\r\n  \"cuentaFiduciaria\": {\r\n    \"cbu\": \"string\",\r\n    \"alias\": \"string\",\r\n    \"numeroCuenta\": \"string\",\r\n    \"saldo\": 0,\r\n    \"tipo\": 1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/crear",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearCripto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/crear",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConvertirMoneda",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWJBcGkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJtYXJpb2NvcmlhQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjEiLCJleHAiOjE2OTg0MDA3Njh9.fzt0gx0xtMrVnStVC6C3FKlqFed24V8FEGrPcBOqtLY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"monedaOrigen\": \"USD\",\r\n    \"monedaDestino\": \"BTC\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/convertir",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"convertir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransferenciaCripto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"emailOrigen\": \"mariocoria@gmail.com\",\r\n    \"emailDestino\": \"aliciacoria@gmail.com\",\r\n    \"cuentaOrigen\": {\r\n      \"cuentaCripto\": {\r\n        \"uuid\": \"d37afff9-2dee-4c6d-b2f9-2b33d75b8839\",\r\n        \"nombreCripto\": \"BTC\"\r\n      },\r\n      \"cuentaFiduciaria\": null\r\n    },\r\n    \"cuentaDestino\": {\r\n      \"cuentaCripto\": {\r\n        \"uuid\": \"e176ca1c-cf86-4b46-b250-50c31dbf03e9\",\r\n        \"nombreCripto\": \"BTC\"\r\n      },\r\n      \"cuentaFiduciaria\": null\r\n    },\r\n    \"monto\": 0.0500,\r\n    \"tipoCuenta\": 1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransferirFiduciaria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWJBcGkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJtYXJpb2NvcmlhQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjEiLCJleHAiOjE2OTg0MDI0Nzh9.XIEeExVvSyAXuTq3XcRkvs5lhDo3DtgOvtahH47qFTc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"emailOrigen\": \"string\",\r\n    \"emailDestino\": \"string\",\r\n    \"cuentaOrigen\": {\r\n      \"cuentaCripto\": {\r\n        \"uuid\": \"string\",\r\n        \"nombreCripto\": \"string\",\r\n        \"saldo\": 0\r\n      },\r\n      \"cuentaFiduciaria\": {\r\n        \"cbu\": \"string\",\r\n        \"alias\": \"string\",\r\n        \"numeroCuenta\": \"string\",\r\n        \"saldo\": 0,\r\n        \"tipo\": 1\r\n      }\r\n    },\r\n    \"cuentaDestino\": {\r\n      \"cuentaCripto\": {\r\n        \"uuid\": \"string\",\r\n        \"nombreCripto\": \"string\",\r\n        \"saldo\": 0\r\n      },\r\n      \"cuentaFiduciaria\": {\r\n        \"cbu\": \"string\",\r\n        \"alias\": \"string\",\r\n        \"numeroCuenta\": \"string\",\r\n        \"saldo\": 0,\r\n        \"tipo\": 1\r\n      }\r\n    },\r\n    \"monto\": 0,\r\n    \"tipoCuenta\": 1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/transferir",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"transferir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultarSaldo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"email\": \"mariocoria@gmail.com\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/ConsultarSaldo",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"ConsultarSaldo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Depositar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"tipo\": 1,\r\n    \"monto\": 0,\r\n    \"numeroCuenta\": \"string\",\r\n    \"emailUsuario\": \"string\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/Depositar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"Depositar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extraer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"tipo\": 1,\r\n    \"monto\": 0,\r\n    \"numeroCuenta\": \"string\",\r\n    \"emailUsuario\": \"string\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/extraer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"extraer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movimientos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"emailUsuario\": \"string\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta/movimientos",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta",
+								"movimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TodasLasCuentas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7110/api/Cuenta",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7110",
+							"path": [
+								"api",
+								"Cuenta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
